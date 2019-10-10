@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:hackaton_atlantico/models/Palestra.dart';
-import 'package:hackaton_atlantico/components/PalestraScreen.dart';
+import 'package:hackaton_atlantico/models/Evento.dart';
+import 'package:hackaton_atlantico/screens/PalestrasDisponiveisScreen.dart';
 import 'package:flutter/cupertino.dart';
 
-class PalestraCard extends StatefulWidget {
-  Palestra palestra;
+class EventoCard extends StatefulWidget {
+  Evento evento;
 
-  PalestraCard(this.palestra);
+  EventoCard(this.evento);
 
   @override
-  _PalestraCardState createState() => _PalestraCardState();
+  _EventoCardState createState() => _EventoCardState();
 }
 
-class _PalestraCardState extends State<PalestraCard> {
+class _EventoCardState extends State<EventoCard> {
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +20,9 @@ class _PalestraCardState extends State<PalestraCard> {
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         decoration: BoxDecoration(
-            border: Border(
-                bottom: BorderSide(color: Theme.of(context).primaryColor, width: 1)
-            )
+          border: Border(
+            bottom: BorderSide(color: Theme.of(context).primaryColor, width: 1)
+          )
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -31,7 +31,8 @@ class _PalestraCardState extends State<PalestraCard> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text("- " + widget.palestra.nome, textAlign: TextAlign.start,style: TextStyle(fontSize: 17, ), ),
+                Text("- " + widget.evento.nome, textAlign: TextAlign.start,style: TextStyle(fontSize: 20),),
+                Text(widget.evento.description)
               ],
             ),
             Icon(Icons.navigate_next, size: 35, color: Theme.of(context).primaryColor,)
@@ -39,7 +40,7 @@ class _PalestraCardState extends State<PalestraCard> {
         ),
       ),
       onTap: () {
-        Navigator.push(context, new CupertinoPageRoute(builder: (context) => PalestraScreen()));
+        Navigator.push(context, new CupertinoPageRoute(builder: (context) => PalestrasDisponiveis(widget.evento)));
       },
     );
   }

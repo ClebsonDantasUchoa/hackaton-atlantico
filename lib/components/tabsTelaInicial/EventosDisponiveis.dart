@@ -1,4 +1,4 @@
-import 'package:hackaton_atlantico/components/EventoCard.dart';
+import 'package:hackaton_atlantico/components/cards/EventoCard.dart';
 import 'package:hackaton_atlantico/models/Evento.dart';
 import 'package:flutter/material.dart';
 import 'package:hackaton_atlantico/bloc/EventoBloc.dart';

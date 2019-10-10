@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hackaton_atlantico/models/Palestra.dart';
 import 'package:hackaton_atlantico/bloc/PalestraBloc.dart';
-import 'package:hackaton_atlantico/components/PalestraCard.dart';
+import 'package:hackaton_atlantico/components/cards/PalestraCard.dart';
 
 class PalestrasSalvas extends StatefulWidget {
   @override

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hackaton_atlantico/components/PalestraCard.dart';
+import 'package:hackaton_atlantico/components/cards/PalestraCard.dart';
 import 'package:hackaton_atlantico/models/Palestra.dart';
 import 'package:hackaton_atlantico/bloc/PalestraBloc.dart';
 import 'package:hackaton_atlantico/models/Evento.dart';
@@ -34,7 +34,17 @@ class _PalestrasDisponiveisState extends State<PalestrasDisponiveis> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Palestras de " + widget.evento.nome),),
+      appBar: AppBar(title:
+//      Text("Palestras de " + widget.evento.nome, style: TextStyle(fontSize: 19),)
+        RichText(
+            text: TextSpan(
+              children: <TextSpan>[
+                TextSpan(text: "Palestras de ", style: TextStyle(fontSize: 16)),
+                TextSpan(text: widget.evento.nome, style: TextStyle(fontSize: 21))
+              ]
+            )
+          ),
+        ),
       body: decideRendering()
     );
   }

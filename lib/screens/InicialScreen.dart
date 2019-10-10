@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hackaton_atlantico/bloc/EventoBloc.dart';
-import 'package:hackaton_atlantico/components/telaInicialTabs/EventosDisponiveis.dart';
-import 'package:hackaton_atlantico/components/telaInicialTabs/PalestrasSalvas.dart';
+import 'package:hackaton_atlantico/components/tabsTelaInicial/EventosDisponiveis.dart';
+import 'package:hackaton_atlantico/components/tabsTelaInicial/PalestrasSalvas.dart';
 
 class TelaInicial extends StatefulWidget {
   @override
@@ -32,7 +32,7 @@ class _TelaInicialState extends State<TelaInicial> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Hackaton - Atlântico'),
+        title: const Text('MyLA'),
         centerTitle: true,
       ),
       body: Center(
@@ -42,11 +42,11 @@ class _TelaInicialState extends State<TelaInicial> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.description),
-            title: Text('Disponíveis'),
+            title: Text('Eventos disponíveis', style: TextStyle(fontSize: 17),),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.arrow_downward),
-            title: Text('Salvos'),
+            title: Text('Palestras salvas', style: TextStyle(fontSize: 17)),
           ),
         ],
         currentIndex: _selectedIndex,

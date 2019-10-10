@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hackaton_atlantico/screens/TelaInicial.dart';
+import 'screens/LoginScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         textTheme: TextTheme(display1: TextStyle(color: Colors.white, fontSize: 17))
       ),
-      home: TelaInicial()
+      home: Login()
     );
   }
 }

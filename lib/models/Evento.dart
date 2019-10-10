@@ -14,7 +14,7 @@ class Evento{
     return Evento(
       json["name"],
       json["description"],
-      json["id"]
+      json["_id"]
     );
   }
 }

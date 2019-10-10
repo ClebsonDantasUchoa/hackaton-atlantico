@@ -23,7 +23,7 @@ class EventoBloc {
   Stream get outEventos => _eventos.stream;
 
   void buscarEventos(){
-    API().getRequest(path: "/events").then((response){
+    API().getRequest(path: "/event").then((response){
       var decoded = json.decode(response.body);
       List<Evento> eventos = converterArrayParaListaDeEventos(decoded);
       _eventos.sink.add(eventos);

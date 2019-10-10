@@ -2,7 +2,7 @@ import 'package:http/http.dart' as http;
 import 'dart:io';
 
 class API {
-  String _apiUrl='d8248cbb.ngrok.io';
+  String _apiUrl='3.16.109.167:3000';
   String _token;
 
   Future<http.Response> getRequest({String url, String path}) async{

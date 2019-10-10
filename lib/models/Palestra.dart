@@ -4,14 +4,15 @@ class Palestra{
   String id;
   String nome;
   String transcripton;
+  //Strind description;
 
   Palestra(this.nome, this.transcripton, this.id);
 
   factory Palestra.fromJson(Map<String, dynamic> json){
     return Palestra(
       json["title"],
-      json["transcripton"],
-      json["id"]
+      json["transcripton"]["body"] ?? "",
+      json["id"],
     );
   }
 

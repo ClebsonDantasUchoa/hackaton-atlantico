@@ -2,14 +2,13 @@ import 'package:hackaton_atlantico/models/Palestra.dart';
 import 'package:hackaton_atlantico/services/API.dart';
 import 'package:rxdart/rxdart.dart';
 import 'dart:convert';
-//import 'package:shared_preferences/shared_preferences.dart';
 
 class PalestraBloc {
 
   static PalestraBloc _ourInstance;
   final BehaviorSubject<List<Palestra>> _palestras = BehaviorSubject<List<Palestra>>();
   final BehaviorSubject<List<Palestra>> _favoritasStream = BehaviorSubject<List<Palestra>>();
-  final List<Palestra> _palestrasFavoritas = [];
+  final List<Palestra> _palestrasFavoritas = new List<Palestra>();
   PalestraBloc._internalConstructor();
 
   static PalestraBloc getInstance() {
@@ -28,12 +27,16 @@ class PalestraBloc {
   List<Palestra> get favoritas => _palestrasFavoritas;
 
   void buscarPalestras(String idEvento){
-    API().getRequest(path: "/lectures/event/" + idEvento).then((response){
+    API().getRequest(path: "/lecture/event/" + idEvento).then((response){
+      print("/lectures/event/" + idEvento);
       var decoded = json.decode(response.body);
+      decoded = decoded["data"];
       List<Palestra> palestras = converterArrayParaListaDePalestra(decoded);
       _palestras.sink.add(palestras);
       print("palestras carregadas");
       return palestras;
+    }).catchError((error){
+      print(error);
     });
   }
 
@@ -50,14 +53,15 @@ class PalestraBloc {
     return palestras;
   }
 
-  void salvarPalestra(Palestra palestra) async{
+  void salvarPalestra(Palestra palestra){
     _palestrasFavoritas.add(palestra);
-    _palestras.sink.add(_palestrasFavoritas);
+    print(_palestrasFavoritas[0].nome + " -  " +_palestrasFavoritas.length.toString());
+    _favoritasStream.sink.add(_palestrasFavoritas);
   }
 
   void removerPalestra(Palestra palestra){
     _palestrasFavoritas.remove(palestra);
-    _palestras.sink.add(_palestrasFavoritas);
+    _favoritasStream.sink.add(_palestrasFavoritas);
   }
 
   void dispose(){
